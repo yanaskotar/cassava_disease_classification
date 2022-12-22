@@ -1,9 +1,10 @@
 FROM python:3.9
 
-COPY requirements.txt ./requirements.txt
+RUN apt-get update && \
+    apt-get install ffmpeg libsm6 libxext6 -y && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update
-RUN apt-get install ffmpeg libsm6 libxext6 -y
+COPY requirements.txt ./requirements.txt
 
 RUN python -m pip install -U pip && \
     python -m pip install -r requirements.txt && \
