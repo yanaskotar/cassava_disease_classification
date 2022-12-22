@@ -1,0 +1,4 @@
+**/.gitignore
+data/images
+env
+__pycache__

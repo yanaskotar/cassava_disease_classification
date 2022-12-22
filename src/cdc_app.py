@@ -3,10 +3,11 @@ import pandas as pd
 import numpy as np
 import torch
 import cv2
+import os
 import albumentations as A
 from albumentations import pytorch as ATorch
 
-import simple_model
+import simple_model as simple_model
 
 def get_transforms():
         return A.Compose(
@@ -24,11 +25,11 @@ def get_transforms():
 
 if __name__=='__main__':
     model = simple_model.EfficientNetModel()
-    weights = torch.load('models/best_model.torch', map_location=torch.device('cpu'))["model_state_dict"]
+    weights = torch.load('resources/models/best_model.torch', map_location=torch.device('cpu'))["model_state_dict"]
     model.load_state_dict(weights)
     model.eval().to('cpu')
 
-    label_map = pd.read_json("data/label_num_to_disease_map.json", typ="series")
+    label_map = pd.read_json("resources/data/label_num_to_disease_map.json", typ="series")
 
     with st.form('Form'):
         image_file = st.file_uploader('Give me a picture of a cassava plant', type=['png', 'jpg'])
