@@ -1,0 +1,8 @@
+streamlit==1.16.0
+torch
+torchvision
+efficientnet_pytorch
+pandas==1.5.2
+numpy==1.24.0
+opencv-python==4.6.0.66
+albumentations==1.3.0
